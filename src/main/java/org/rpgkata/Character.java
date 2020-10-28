@@ -46,8 +46,8 @@ public class Character {
         }
     }
 
-    public void isAttackedBy(Character characterB) {
-        var damage = characterB.dealsDamage();
+    public void isAttackedBy(Character character) {
+        var damage = character.dealsDamage();
         takeDamage(damage);
     }
 

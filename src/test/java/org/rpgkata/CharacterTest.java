@@ -105,4 +105,13 @@ public class CharacterTest {
 
         assertEquals(1000, characterA.getHealth());
     }
+
+    @Test
+    public void testCharactersCannotAttackThemselves(){
+        Character characterA = new Character(800, 1, true);
+
+        characterA.isAttackedBy(characterA);
+
+        assertEquals(800, characterA.getHealth());
+    }
 }
