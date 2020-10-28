@@ -87,21 +87,10 @@ public class CharacterTest {
     }
 
     @Test
-    public void testCharacterDealsHealing(){
-        Character characterA = new Character(800, 1, true);
-        Character characterB = new Character(1000, 1, true);
-
-        characterA.healedBy(characterB);
-
-        assertEquals(820, characterA.getHealth());
-    }
-
-    @Test
     public void testCharacterIsAlreadyAtMaximumHealing(){
         Character characterA = new Character(1000, 1, true);
-        Character characterB = new Character(1000, 1, true);
 
-        characterA.healedBy(characterB);
+        characterA.heal(20);
 
         assertEquals(1000, characterA.getHealth());
     }
@@ -114,4 +103,6 @@ public class CharacterTest {
 
         assertEquals(800, characterA.getHealth());
     }
+
 }
+

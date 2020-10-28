@@ -47,8 +47,11 @@ public class Character {
     }
 
     public void isAttackedBy(Character character) {
-        var damage = character.dealsDamage();
-        takeDamage(damage);
+        if (character != this){
+            var damage = character.dealsDamage();
+            takeDamage(damage);
+        }
+
     }
 
     private int dealsDamage() {
@@ -61,10 +64,6 @@ public class Character {
         if (this.health > 1000)
             this.health = 1000;
 
-    }
-
-    public void healedBy(Character character) {
-        heal(character.dealsHealth());
     }
 
     private int dealsHealth() {
