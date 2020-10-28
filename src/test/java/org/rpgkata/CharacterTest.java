@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import javax.accessibility.AccessibleStateSet;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CharacterTest {
 
@@ -41,6 +40,7 @@ public class CharacterTest {
         characterA.isAttackedBy(characterB);
         assertEquals(980, characterA.getHealth());
     }
+
     @Test
     public void testCharacterHealing() {
     	Character characterA = new Character(800, 1, true);
@@ -69,7 +69,40 @@ public class CharacterTest {
     public void setCorrectParameters() {
     	Character characterA = new Character(0, 1, true);
     	assertEquals(0, characterA.getHealth());
+    	assertFalse(characterA.isAlive());
     }
-    
 
+    @Test
+    public void setCharacterIsAlive() {
+    	Character characterA = new Character(100, 1, false);
+    	assertEquals(100, characterA.getHealth());
+    	assertTrue(characterA.isAlive());
+    }
+
+    @Test
+    public void setCharacterIsAliveAndTheHealthDoesNotExceedTheMaximum() {
+    	Character characterA = new Character(2000, 1, true);
+    	assertEquals(1000, characterA.getHealth());
+    	assertTrue(characterA.isAlive());
+    }
+
+    @Test
+    public void testCharacterDealsHealing(){
+        Character characterA = new Character(800, 1, true);
+        Character characterB = new Character(1000, 1, true);
+
+        characterA.healedBy(characterB);
+
+        assertEquals(820, characterA.getHealth());
+    }
+
+    @Test
+    public void testCharacterIsAlreadyAtMaximumHealing(){
+        Character characterA = new Character(1000, 1, true);
+        Character characterB = new Character(1000, 1, true);
+
+        characterA.healedBy(characterB);
+
+        assertEquals(1000, characterA.getHealth());
+    }
 }
