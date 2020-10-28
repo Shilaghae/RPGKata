@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import javax.accessibility.AccessibleStateSet;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class CharacterTest {
 
@@ -40,5 +41,35 @@ public class CharacterTest {
         characterA.isAttackedBy(characterB);
         assertEquals(980, characterA.getHealth());
     }
+    @Test
+    public void testCharacterHealing() {
+    	Character characterA = new Character(800, 1, true);
+    	characterA.heal(100);
+    	assertEquals(900, characterA.getHealth());
+    	
+    }
+    
+    @Test
+    public void testCharacterCantBeHealed() {
+    	Character characterA = new Character(0, 1, false);
+    	characterA.heal(100);
+    	assertEquals(0, characterA.getHealth());
+    	assertFalse(characterA.isAlive());
+    }
+    
+    @Test
+    public void testCharacterHealingAbove() {
+    	Character characterA = new Character(800, 1, true);
+    	characterA.heal(300);
+    	assertEquals(1000, characterA.getHealth());
+    	
+    }
+    
+    @Test
+    public void setCorrectParameters() {
+    	Character characterA = new Character(0, 1, true);
+    	assertEquals(0, characterA.getHealth());
+    }
+    
 
 }

@@ -41,4 +41,12 @@ public class Character {
     private int dealsDamage() {
         return 20;
     }
+
+	public void heal(int healingPoint) {
+		if(this.isAlive)
+			this.health = health + healingPoint;
+		if(this.health>1000)
+			this.health=1000;
+		
+	}
 }
