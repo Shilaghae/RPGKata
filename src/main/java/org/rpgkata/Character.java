@@ -24,7 +24,21 @@ public class Character {
         return isAlive;
     }
 
-    public void takeDamage(int damage) {
+    public void takeDamage(Integer damage) {
         health = health - damage;
+
+        if(health <= 0){
+            health = 0;
+            isAlive = false;
+        }
+    }
+
+    public void isAttackedBy(Character characterB) {
+        var damage = characterB.dealsDamage();
+        takeDamage(damage);
+    }
+
+    private int dealsDamage() {
+        return 20;
     }
 }
