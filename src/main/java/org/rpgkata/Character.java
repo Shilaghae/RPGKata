@@ -51,7 +51,6 @@ public class Character {
             var damage = character.dealsDamage();
             takeDamage(damage);
         }
-
     }
 
     private int dealsDamage() {
@@ -64,9 +63,5 @@ public class Character {
         if (this.health > 1000)
             this.health = 1000;
 
-    }
-
-    private int dealsHealth() {
-        return 20;
     }
 }
