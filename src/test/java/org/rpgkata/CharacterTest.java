@@ -44,7 +44,6 @@ public class CharacterTest {
     	Character characterA = new Character(800, 1, true);
     	characterA.heal(100);
     	assertEquals(900, characterA.getHealth());
-    	
     }
     
     @Test
@@ -60,7 +59,6 @@ public class CharacterTest {
     	Character characterA = new Character(800, 1, true);
     	characterA.heal(300);
     	assertEquals(1000, characterA.getHealth());
-    	
     }
     
     @Test
@@ -87,7 +85,6 @@ public class CharacterTest {
     @Test
     public void testCharacterIsAlreadyAtMaximumHealing(){
         Character characterA = new Character(1000, 1, true);
-
         characterA.heal(20);
 
         assertEquals(1000, characterA.getHealth());
@@ -96,7 +93,6 @@ public class CharacterTest {
     @Test
     public void testCharactersCannotAttackThemselves(){
         Character characterA = new Character(800, 1, true);
-
         characterA.isAttackedBy(characterA);
 
         assertEquals(800, characterA.getHealth());
@@ -157,7 +153,6 @@ public class CharacterTest {
         melee.isAttackedBy(rangedFighter);
         
         assertEquals(980, melee.getHealth());
-
     }
 
 }

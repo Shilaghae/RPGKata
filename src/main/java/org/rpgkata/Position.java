@@ -9,7 +9,7 @@ public class Position {
         this.y = y;
     }
 
-    public int distance(Position point) {
+    public int getDistance(Position point) {
         int xDiff = Math.abs(this.x - point.getX());
         xDiff = xDiff * xDiff;
         int yDiff = Math.abs(this.y - point.getY());
@@ -19,10 +19,6 @@ public class Position {
 
     public int getX() {
         return x;
-    }
-
-    public void setX(int x) {
-        this.x = x;
     }
 
     public int getY() {

@@ -9,26 +9,19 @@ public class Character {
     private Position position;
 
     public Character(double health, int level, boolean isAlive, int maxRange, Position position) {
-        this.health = health;
-        this.level = level;
-        this.isAlive = isAlive;
-        this.maxRange = maxRange;
+        this(health, level, isAlive, maxRange);
         this.position = position;
-        checkStatus();
     }
     public Character(double health, int level, boolean isAlive, int maxRange) {
-        this.health = health;
-        this.level = level;
-        this.isAlive = isAlive;
+        this(health, level, isAlive);
         this.maxRange = maxRange;
-        checkStatus();
     }
     public Character(double health, int level, boolean isAlive) {
         this.health = health;
         this.level = level;
         this.isAlive = isAlive;
-        checkStatus();
         position = new Position(0,0);
+        checkStatus();
     }
 
     private void checkStatus() {
@@ -65,16 +58,9 @@ public class Character {
     }
 
     public void isAttackedBy(Character character) {
-        double extraDamage = 0;
-        if(getPosition().distance(character.getPosition()) <= character.maxRange) {
-
-            if ((character.getLevel() - level) >= 5) {
-                extraDamage = character.dealsDamage() * 0.05;
-            }
-            double minusDamage = 0;
-            if (level - character.getLevel() >= 5) {
-                minusDamage = character.dealsDamage() * 0.05;
-            }
+        if(getPosition().getDistance(character.getPosition()) <= character.maxRange) {
+            double extraDamage = getDamageFactor(character, character.getLevel(), level);
+            double minusDamage = getDamageFactor(character, level, character.getLevel());
 
             if (character != this) {
                 double damage = character.dealsDamage();
@@ -82,6 +68,14 @@ public class Character {
                 takeDamage(damage);
             }
         }
+    }
+
+    private double getDamageFactor(Character character, int level, int level2) {
+        double minusDamage = 0;
+        if (level - level2 >= 5) {
+            minusDamage = character.dealsDamage() * 0.05;
+        }
+        return minusDamage;
     }
 
     private double dealsDamage() {
