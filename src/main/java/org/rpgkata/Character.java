@@ -28,6 +28,7 @@ public class Character {
         this.level = level;
         this.isAlive = isAlive;
         checkStatus();
+        position = new Position(0,0);
     }
 
     private void checkStatus() {
