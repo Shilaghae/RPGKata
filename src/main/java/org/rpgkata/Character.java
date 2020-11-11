@@ -61,6 +61,7 @@ public class Character {
             damage = damage + extraDamage - minusDamage;
             takeDamage(damage);
         }
+
     }
 
     private double dealsDamage() {
