@@ -14,7 +14,13 @@ public class Character {
         this.maxRange = maxRange;
         checkStatus();
     }
-
+    public Character(double health, int level, boolean isAlive, int maxRange) {
+        this.health = health;
+        this.level = level;
+        this.isAlive = isAlive;
+        this.maxRange = maxRange;
+        checkStatus();
+    }
     public Character(double health, int level, boolean isAlive) {
         this.health = health;
         this.level = level;

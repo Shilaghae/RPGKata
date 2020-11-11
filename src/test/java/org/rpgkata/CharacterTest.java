@@ -142,10 +142,21 @@ public class CharacterTest {
     }
 
     @Test
+    public void testCharactersAreNotInRangeToDealDamage(){
+        Character melee = new MeleeCharacter(1000, 6, true, new Position(1,2));
+        Character rangedFighter = new RangedCharacter(1000, 6, true, new Position(1,2));
+        melee.isAttackedBy(rangedFighter);
+        
+        assertEquals(1000, melee.getHealth());
+
+    }
+    @Test
     public void testCharactersAreInRangeToDealDamage(){
         Character melee = new MeleeCharacter(1000, 6, true, new Position(1,2));
         Character rangedFighter = new RangedCharacter(1000, 6, true, new Position(3,4));
-
+        melee.isAttackedBy(rangedFighter);
+        
+        assertEquals(980, melee.getHealth());
 
     }
 
