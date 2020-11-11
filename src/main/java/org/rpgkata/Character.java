@@ -7,7 +7,7 @@ public class Character {
     private boolean isAlive;
     private int maxRange;
 
-    public Character(double health, int level, boolean isAlive, int maxRange) {
+    public Character(double health, int level, boolean isAlive, int maxRange, Position position) {
         this.health = health;
         this.level = level;
         this.isAlive = isAlive;

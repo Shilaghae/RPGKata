@@ -134,5 +134,20 @@ public class CharacterTest {
         assertEquals(2, melee.getMaxRange());
     }
 
+    @Test
+    public void testRangedCharacterHasAnTwentyMetersMaxRange(){
+        Character rangedFighter = new RangedCharacter(1000, 6, true);
+
+        assertEquals(20, rangedFighter.getMaxRange());
+    }
+
+    @Test
+    public void testCharactersAreInRangeToDealDamage(){
+        Character melee = new MeleeCharacter(1000, 6, true, new Position(1,2));
+        Character rangedFighter = new RangedCharacter(1000, 6, true, new Position(3,4));
+
+
+    }
+
 }
 
