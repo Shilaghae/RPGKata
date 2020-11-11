@@ -3,8 +3,6 @@ package org.rpgkata;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import javax.accessibility.AccessibleStateSet;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CharacterTest {
@@ -120,6 +118,20 @@ public class CharacterTest {
 
         characterA.isAttackedBy(characterB);
         assertEquals(981, characterA.getHealth());
+    }
+
+    @Test
+    public void testCharacterHasAnAttackMaxRange(){
+        Character characterA = new Character(1000, 6, true, 2);
+
+        assertEquals(2, characterA.getMaxRange());
+    }
+
+    @Test
+    public void testMeleeCharacterHasAnTwoMetersMaxRange(){
+        Character melee = new MeleeCharacter(1000, 6, true);
+
+        assertEquals(2, melee.getMaxRange());
     }
 
 }

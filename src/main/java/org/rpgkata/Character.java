@@ -5,6 +5,15 @@ public class Character {
     private double health;
     private int level;
     private boolean isAlive;
+    private int maxRange;
+
+    public Character(double health, int level, boolean isAlive, int maxRange) {
+        this.health = health;
+        this.level = level;
+        this.isAlive = isAlive;
+        this.maxRange = maxRange;
+        checkStatus();
+    }
 
     public Character(double health, int level, boolean isAlive) {
         this.health = health;
@@ -74,5 +83,9 @@ public class Character {
         if (this.health > 1000)
             this.health = 1000;
 
+    }
+
+    public int getMaxRange() {
+        return maxRange;
     }
 }
