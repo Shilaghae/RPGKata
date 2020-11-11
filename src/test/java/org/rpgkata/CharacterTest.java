@@ -104,5 +104,23 @@ public class CharacterTest {
         assertEquals(800, characterA.getHealth());
     }
 
+    @Test
+    public void testCharacterTakes50PercentMoreDamageWhenAttackerHas5LevelsMore(){
+        Character characterA = new Character(1000, 1, true);
+        Character characterB = new Character(1000, 6, true);
+
+        characterA.isAttackedBy(characterB);
+        assertEquals(979, characterA.getHealth());
+    }
+
+    @Test
+    public void testCharacterTakes50PercentLessDamageWhenAttackerHas5LevelsLess(){
+        Character characterA = new Character(1000, 6, true);
+        Character characterB = new Character(1000, 1, true);
+
+        characterA.isAttackedBy(characterB);
+        assertEquals(981, characterA.getHealth());
+    }
+
 }
 
