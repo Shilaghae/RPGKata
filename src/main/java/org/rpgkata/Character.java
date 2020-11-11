@@ -2,11 +2,11 @@ package org.rpgkata;
 
 public class Character {
 
-    private int health;
+    private double health;
     private int level;
     private boolean isAlive;
 
-    public Character(int health, int level, boolean isAlive) {
+    public Character(double health, int level, boolean isAlive) {
         this.health = health;
         this.level = level;
         this.isAlive = isAlive;
@@ -25,7 +25,7 @@ public class Character {
         }
     }
 
-    public int getHealth() {
+    public double getHealth() {
         return health;
     }
 
@@ -37,7 +37,7 @@ public class Character {
         return isAlive;
     }
 
-    public void takeDamage(Integer damage) {
+    public void takeDamage(double damage) {
         health = health - damage;
 
         if (health <= 0) {
@@ -47,13 +47,19 @@ public class Character {
     }
 
     public void isAttackedBy(Character character) {
+        double extraDamage = 0;
+        if((character.getLevel() - level) >= 5){
+            extraDamage = character.dealsDamage() * 0.05;
+        }
+
         if (character != this){
-            var damage = character.dealsDamage();
+            double damage = character.dealsDamage();
+            damage = damage + extraDamage;
             takeDamage(damage);
         }
     }
 
-    private int dealsDamage() {
+    private double dealsDamage() {
         return 20;
     }
 
