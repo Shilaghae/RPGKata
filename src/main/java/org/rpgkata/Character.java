@@ -51,10 +51,14 @@ public class Character {
         if((character.getLevel() - level) >= 5){
             extraDamage = character.dealsDamage() * 0.05;
         }
+        double minusDamage = 0;
+        if(level - character.getLevel()>= 5) {
+        	minusDamage = character.dealsDamage() * 0.05;
+        }
 
         if (character != this){
             double damage = character.dealsDamage();
-            damage = damage + extraDamage;
+            damage = damage + extraDamage - minusDamage;
             takeDamage(damage);
         }
     }
