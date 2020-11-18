@@ -156,13 +156,25 @@ public class CharacterTest {
     }
 
     @Test
-    public void testCharacterJoinsFaction(){
-        Character character = new Character(1000, 6, true, new Position(1, 2));
+    public void testCharacterJoinsFactionFire(){
+        Character character = new Character(1000, 6, true, 2);
         Faction fire = new Faction("fire");
         fire.join(character);
-        character.isMemeberOf(fire);
 
-        assertTrue(character.isMemeberOf(fire));
+        assertTrue(character.isMemberOf(fire));
+    }
+
+    @Test
+    public void testCharacterJoinsFactionsFireAndAir(){
+        Character character = new Character(1000, 6, true, 2);
+        Faction fireFaction = new Faction("fire");
+        Faction airFaction = new Faction("air");
+
+        fireFaction.join(character);
+        airFaction.join(character);
+
+        assertTrue(character.isMemberOf(fireFaction));
+        assertTrue(character.isMemberOf(airFaction));
     }
 
 }

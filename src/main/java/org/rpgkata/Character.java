@@ -3,10 +3,11 @@ package org.rpgkata;
 public class Character {
 
     private double health;
-    private int level;
+    private final int level;
     private boolean isAlive;
     private int maxRange;
     private Position position;
+    private Faction faction;
 
     public Character(double health, int level, boolean isAlive, int maxRange, Position position) {
         this(health, level, isAlive, maxRange);
@@ -96,5 +97,15 @@ public class Character {
 
     public Position getPosition() {
         return position;
+    }
+
+    public boolean isMemberOf(Faction fire) {
+        if (faction.getFactionName() == fire.getFactionName())
+            return true;
+        return false;
+    }
+
+    public void setFaction(Faction faction) {
+        this.faction = faction;
     }
 }
