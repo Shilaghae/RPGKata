@@ -1,5 +1,8 @@
 package org.rpgkata;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Character {
 
     private double health;
@@ -7,7 +10,7 @@ public class Character {
     private boolean isAlive;
     private int maxRange;
     private Position position;
-    private Faction faction;
+    private List<Faction> factions = new ArrayList<Faction>();
 
     public Character(double health, int level, boolean isAlive, int maxRange, Position position) {
         this(health, level, isAlive, maxRange);
@@ -100,12 +103,18 @@ public class Character {
     }
 
     public boolean isMemberOf(Faction fire) {
-        if (faction.getFactionName() == fire.getFactionName())
-            return true;
+        for (int i = 0; i < factions.size(); i++){
+            if (factions.get(i).getFactionName() == fire.getFactionName())
+                return true;
+        }
         return false;
     }
 
-    public void setFaction(Faction faction) {
-        this.faction = faction;
+    public void addFaction(Faction faction) {
+        factions.add(faction);
     }
+
+
+
+
 }

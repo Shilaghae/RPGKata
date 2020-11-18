@@ -12,6 +12,6 @@ public class Faction {
     }
 
     public void join(Character character) {
-        character.setFaction(this);
+        character.addFaction(this);
     }
 }
