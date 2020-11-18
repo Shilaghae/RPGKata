@@ -155,5 +155,15 @@ public class CharacterTest {
         assertEquals(980, melee.getHealth());
     }
 
+    @Test
+    public void testCharacterJoinsFaction(){
+        Character character = new Character(1000, 6, true, new Position(1, 2));
+        Faction fire = new Faction("fire");
+        fire.join(character);
+        character.isMemeberOf(fire);
+
+        assertTrue(character.isMemeberOf(fire));
+    }
+
 }
 
