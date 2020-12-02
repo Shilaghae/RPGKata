@@ -134,4 +134,8 @@ public class Character {
     public void isHealedBy(Character character) {
 
     }
+
+    public int getHealingPoints() {
+        return 5;
+    }
 }

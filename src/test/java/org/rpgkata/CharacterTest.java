@@ -246,5 +246,28 @@ public class CharacterTest {
 //        assertEquals(800, jack.getHealth());
 //    }
 
+//    @Test
+//    public void testAlliesCanHealEachOther(){
+//        Character jack = new Character(800, 6, true, 2, new Position(3,4));
+//        Character jill = new Character(1000, 6, true, 2, new Position(1,2));
+//
+//        Faction fireFaction = new Faction("fire");
+//
+//        fireFaction.join(jack);
+//        fireFaction.join(jill);
+//
+//        jack.isHealedBy(jill);
+//
+//        assertEquals(805, jack.getHealth());
+//    }
+
+    @Test
+    public void testHealingPoints(){
+        Character character = new Character(800, 6, true, 2, new Position(3,4));
+
+        assertEquals(5, character.getHealingPoints());
+    }
+
+
 }
 
