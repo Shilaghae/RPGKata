@@ -62,6 +62,8 @@ public class Character {
     }
 
     public void isAttackedBy(Character character) {
+        if(isAlly(character))
+            return;
         if(getPosition().getDistance(character.getPosition()) <= character.maxRange) {
             double extraDamage = getDamageFactor(character, character.getLevel(), level);
             double minusDamage = getDamageFactor(character, level, character.getLevel());
@@ -126,6 +128,10 @@ public class Character {
             }
         }
         return false;
+
+    }
+
+    public void isHealedBy(Character character) {
 
     }
 }

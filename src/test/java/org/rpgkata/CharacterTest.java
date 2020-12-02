@@ -47,7 +47,7 @@ public class CharacterTest {
     }
     
     @Test
-    public void testCharacterCantBeHealed() {
+    public void testCharacterDeadPersonStaysDead() {
     	Character characterA = new Character(0, 1, false);
     	characterA.heal(100);
     	assertEquals(0, characterA.getHealth());
@@ -202,10 +202,6 @@ public class CharacterTest {
         assertFalse(character.isMemberOf(airFaction));
     }
 
-//    Players belonging to the same Faction are considered Allies.
-//
-//    Allies cannot Deal Damage to one another.
-
     @Test
     public void testJackAndJillAreAllies(){
         Character jack = new Character(1000, 6, true, 2);
@@ -216,5 +212,39 @@ public class CharacterTest {
         fireFaction.join(jill);
         assertTrue(jack.isAlly(jill));
     }
+
+    @Test
+    public void testThatAlliesCannotHurtEachOther(){
+        Character jack = new Character(1000, 6, true, 2, new Position(3,4));
+        Character jill = new Character(1000, 6, true, 2, new Position(1,2));
+
+        Faction fireFaction = new Faction("fire");
+        fireFaction.join(jack);
+        fireFaction.join(jill);
+
+        jack.isAttackedBy(jill);
+
+        assertEquals(1000, jack.getHealth());
+    }
+
+    //Allies can heal eachother
+    //Non-allies cannot heal eacho-other
+
+//    @Test
+//    public void testNonAlliesCannotHealEachOther(){
+//        Character jack = new Character(800, 6, true, 2, new Position(3,4));
+//        Character jill = new Character(1000, 6, true, 2, new Position(1,2));
+//
+//        Faction fireFaction = new Faction("fire");
+//        Faction airFaction = new Faction("air");
+//
+//        fireFaction.join(jack);
+//        airFaction.join(jill);
+//
+//        jack.isHealedBy(jill);
+//
+//        assertEquals(800, jack.getHealth());
+//    }
+
 }
 
