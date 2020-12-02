@@ -212,6 +212,9 @@ public class CharacterTest {
         Character jill = new Character(1000, 6, true, 2);
 
         Faction fireFaction = new Faction("fire");
+        fireFaction.join(jack);
+        fireFaction.join(jill);
+        assertTrue(jack.isAlly(jill));
     }
 }
 

@@ -118,4 +118,14 @@ public class Character {
     public void removeFaction(Faction faction) {
         factions.remove(faction);
     }
+
+    public boolean isAlly(Character character) {
+        for (int i = 0; i < factions.size(); i++) {
+            if (character.isMemberOf(factions.get(i))) {
+                return true;
+            }
+        }
+        return false;
+
+    }
 }
