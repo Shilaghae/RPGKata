@@ -156,6 +156,14 @@ public class CharacterTest {
     }
 
     @Test
+    public void testNewCharacterHasNoFaction(){
+        Character character = new Character(1000, 6, true, 2);
+        Faction fire = new Faction("fire");
+
+        assertFalse(character.isMemberOf(fire));
+    }
+
+    @Test
     public void testCharacterJoinsFactionFire(){
         Character character = new Character(1000, 6, true, 2);
         Faction fire = new Faction("fire");
@@ -177,5 +185,33 @@ public class CharacterTest {
         assertTrue(character.isMemberOf(airFaction));
     }
 
+    @Test
+    public void testCharacterJoinsThenLeaveFactionsFireAnAir(){
+        Character character = new Character(1000, 6, true, 2);
+        Faction fireFaction = new Faction("fire");
+        Faction airFaction = new Faction("air");
+
+        fireFaction.join(character);
+        airFaction.join(character);
+        assertTrue(character.isMemberOf(fireFaction));
+        assertTrue(character.isMemberOf(airFaction));
+
+        fireFaction.leave(character);
+        airFaction.leave(character);
+        assertFalse(character.isMemberOf(fireFaction));
+        assertFalse(character.isMemberOf(airFaction));
+    }
+
+//    Players belonging to the same Faction are considered Allies.
+//
+//    Allies cannot Deal Damage to one another.
+
+    @Test
+    public void testJackAndJillAreAllies(){
+        Character jack = new Character(1000, 6, true, 2);
+        Character jill = new Character(1000, 6, true, 2);
+
+        Faction fireFaction = new Faction("fire");
+    }
 }
 

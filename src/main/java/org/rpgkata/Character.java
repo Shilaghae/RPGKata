@@ -115,6 +115,7 @@ public class Character {
     }
 
 
-
-
+    public void removeFaction(Faction faction) {
+        factions.remove(faction);
+    }
 }
