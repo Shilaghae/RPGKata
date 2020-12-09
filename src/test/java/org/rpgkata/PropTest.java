@@ -1,18 +1,15 @@
 package org.rpgkata;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class PropTest {
 
     @Test
     public void canCreateTree(){
         Tree tree = new Tree(2000);
-        Assertions.assertTrue(tree.isAlive());
+        assertTrue(tree.isAlive());
     }
 
     @Test
@@ -33,10 +30,18 @@ public class PropTest {
     @Test 
     public void testObjectIsDestroyed() {
     	 Character character = new Character(2000, 5, true);
-         Tree tree = new Tree(20);
+         Prop tree = new Tree(20);
          tree.isAttackedBy(character);
          assertEquals(0, tree.getHealth());
          assertFalse(tree.isAlive());
     }
 
+    @Test
+    public void testIsDestroyed() {
+    	 Character character = new Character(2000, 5, true);
+         Prop cow = new Cow(80);
+         cow.isAttackedBy(character);
+         assertEquals(60, cow.getHealth());
+         assertTrue(cow.isAlive());
+    }
 }
