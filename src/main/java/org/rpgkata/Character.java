@@ -116,7 +116,6 @@ public class Character {
         factions.add(faction);
     }
 
-
     public void removeFaction(Faction faction) {
         factions.remove(faction);
     }
@@ -128,11 +127,11 @@ public class Character {
             }
         }
         return false;
-
     }
 
     public void isHealedBy(Character character) {
-
+        if(isAlly(character))
+            health += character.getHealingPoints();
     }
 
     public int getHealingPoints() {
