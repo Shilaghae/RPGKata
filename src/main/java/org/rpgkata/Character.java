@@ -84,7 +84,7 @@ public class Character {
         return minusDamage;
     }
 
-    private double dealsDamage() {
+    public double dealsDamage() {
         return 20;
     }
 
