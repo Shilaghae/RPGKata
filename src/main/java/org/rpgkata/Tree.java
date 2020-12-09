@@ -11,7 +11,7 @@ public class Tree {
     }
 
     public boolean isAlive() {
-        return true;
+        return health>0;
     }
 
     public void takesDamage(int damage) {
@@ -20,6 +20,5 @@ public class Tree {
 
     public void isAttackedBy(Character character) {
         health -= character.dealsDamage();
-        assertEquals()
     }
 }

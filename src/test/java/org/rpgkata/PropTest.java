@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class PropTest {
@@ -27,6 +28,15 @@ public class PropTest {
         Tree tree = new Tree(200);
         tree.isAttackedBy(character);
         assertEquals(180, tree.getHealth());
+    }
+    
+    @Test 
+    public void testObjectIsDestroyed() {
+    	 Character character = new Character(2000, 5, true);
+         Tree tree = new Tree(20);
+         tree.isAttackedBy(character);
+         assertEquals(0, tree.getHealth());
+         assertFalse(tree.isAlive());
     }
 
 }
